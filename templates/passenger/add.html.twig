@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block title %}Новый пассажир{% endblock %}
+
+{% block body %}
+    <h1>Добавить нового пассажира</h1>
+    <div>
+        {{ form(form) }}
+    </div>
+{% endblock %}

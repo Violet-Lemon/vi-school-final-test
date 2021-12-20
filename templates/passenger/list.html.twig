@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список пассажиров{% endblock %}
+
+{% block body %}
+    <h1>Список пассажиров:</h1>
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th class="text-center" style="width: 80px">Номер</th>
+                <th class="text-center" style="width: 80px">Фамилия</th>
+                <th class="text-center" style="width: 100px">Имя</th>
+                <th class="text-center" style="width: 180px">Отчество</th>
+                <th style="width: 60px"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for passenger in passengerList %}
+                <tr>
+                    <td class="text-center">{{ passenger.id }}</td>
+                    <td class="text-center">{{ passenger.surname }}</td>
+                    <td class="text-center">{{ passenger.name }}</td>
+                    <td class="text-center">{{ passenger.patronimic }}</td>
+                    <td class="text-center">
+                        <a class="btn btn-primary btn-sm" href="{{ path('passenger.show', {'id': passenger.id }) }}">
+                            Посмотреть
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <a class="btn btn-outline-primary btn-sm mb-2 ps-5 pe-5" href="{{ path('passenger.list') }}">К списку</a>
+    <hr/>
+    <div>
+        <table class="table">
+            <thead>
+            <tbody>
+            <tr>
+                <td>Фамилия</td>
+                <td>{{ passenger.surname }}</td>
+            </tr>
+            <tr>
+                <td>Имя</td>
+                <td>{{ passenger.name }}</td>
+            </tr>
+            <tr>
+                <td>Отчество</td>
+                <td>{{ passenger.patronimic }}</td>
+            </tr>
+            <
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
