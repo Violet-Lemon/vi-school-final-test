@@ -117,4 +117,19 @@ class Passenger
     {
         $this->passportNumber = $passportNumber;
     }
+
+    public function getFullPassengerData(): string
+    {
+        $format = '%s %s %s (%d %d)';
+        $fullData = sprintf(
+            $format,
+            $this->getSurname(),
+            $this->getName(),
+            $this->getPatronimic(),
+            $this->getPassportSeries(),
+            $this->getPassportNumber()
+        );
+        return $fullData;
+    }
+
 }
