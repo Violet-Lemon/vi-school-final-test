@@ -19,7 +19,7 @@ class PassengerType extends AbstractType
                 'label' => 'Фамилия'
             ])
             ->add('name', TextType::class, [
-                'label' => ''
+                'label' => 'Имя'
             ])
             ->add('patronymic', TextType::class, [
                 'label' => 'Отчество'

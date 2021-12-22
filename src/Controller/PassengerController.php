@@ -49,7 +49,7 @@ class PassengerController extends AbstractController
         }
 
         return $this->renderForm('passenger/show.html.twig', [
-            'passenger'      => $passenger,
+            'passenger' => $passenger,
         ]);
     }
 

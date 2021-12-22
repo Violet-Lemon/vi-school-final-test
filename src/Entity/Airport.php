@@ -49,5 +49,5 @@ class Airport
     {
         return $this->id;
     }
-    
+
 }
