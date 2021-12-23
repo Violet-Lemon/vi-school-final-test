@@ -2,7 +2,6 @@
 
 namespace App\DTO;
 
-//use App\Entity\Passenger;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class PassengerDTO
@@ -24,12 +23,10 @@ class PassengerDTO
     private ?string $patronymic;
     /**
      * @Assert\NotBlank(message="Поле должно быть заполнено")
-     * @Assert\Length(max=100)
      */
     private ?int $passportSeries;
     /**
      * @Assert\NotBlank(message="Поле должно быть заполнено")
-     * @Assert\Length(max=100)
      */
     private ?int $passportNumber;
 
@@ -39,7 +36,7 @@ class PassengerDTO
 //
 //        $dto->setSurname($passenger->getSurname());
 //        $dto->setName($passenger->getName());
-//        $dto->setPatronymic($passenger->getPatronimic());
+//        $dto->setPatronymic($passenger->getPatronymic());
 //        $dto->setPassportSeries($passenger->getPassportSeries());
 //        $dto->setPassportNumber($passenger->getPassportNumber());
 //
@@ -95,6 +92,5 @@ class PassengerDTO
     {
         $this->passportNumber = $passportNumber;
     }
-
 
 }

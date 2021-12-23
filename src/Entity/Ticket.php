@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\DTO\PassengerDTO;
+use App\DTO\TicketDTO;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,7 +35,7 @@ class Ticket
     /**
      * @ORM\Column(name="status", type="string", length=100, options={"default" : "забронирован"})
      */
-    private string $status;
+    private string $status = 'забронирован';
 
     public function getPassenger(): Passenger
     {
@@ -78,5 +80,24 @@ class Ticket
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function __construct(
+        Passenger $passenger,
+        Flight $flight
+//        DateTime $flight_date
+    )
+    {
+        $this->passenger = $passenger;
+        $this->flight = $flight;
+        $this->flight_date = new DateTime();
+    }
+    public static function createFromDTO(TicketDTO $dto): self
+    {
+        return new self(
+            $dto->getPassenger(),
+            $dto->getFlight()
+//            $dto->getFlightDate()
+        );
     }
 }

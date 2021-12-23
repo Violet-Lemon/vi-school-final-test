@@ -41,8 +41,8 @@ class Passenger
         string $surname,
         string $name,
         string $patronimic,
-        string $passportSeries,
-        string $passportNumber
+        int $passportSeries,
+        int $passportNumber
     )
     {
         $this->surname = $surname;

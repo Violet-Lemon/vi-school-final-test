@@ -1,100 +1,56 @@
 <?php
-//
-//namespace App\DTO;
-//
-////use App\Entity\Passenger;
-//use Symfony\Component\Validator\Constraints as Assert;
-//
-//class TicketDTO
-//{
+
+namespace App\DTO;
+
+use App\Entity\Flight;
+use App\Entity\Passenger;
+use DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
+
+class TicketDTO
+{
+    /**
+     * @Assert\NotBlank(message="Поле должно быть заполнено")
+     */
+    private ?Flight $flight;
+    /**
+     * @Assert\NotBlank(message="Поле должно быть заполнено")
+     */
+    private ?Passenger $passenger;
 //    /**
 //     * @Assert\NotBlank(message="Поле должно быть заполнено")
 //     * @Assert\Length(max=100)
 //     */
-//    private ?string $surname;
-//    /**
-//     * @Assert\NotBlank(message="Поле должно быть заполнено")
-//     * @Assert\Length(max=100)
-//     */
-//    private ?string $name;
-//    /**
-//     * @Assert\NotBlank(message="Поле должно быть заполнено")
-//     * @Assert\Length(max=100)
-//     */
-//    private ?string $patronymic;
-//    /**
-//     * @Assert\NotBlank(message="Поле должно быть заполнено")
-//     * @Assert\Length(max=100)
-//     */
-//    private ?int $passportSeries;
-//    /**
-//     * @Assert\NotBlank(message="Поле должно быть заполнено")
-//     * @Assert\Length(max=100)
-//     */
-//    private ?int $passportNumber;
-//
-////    public static function createFromEntity(Passenger $passenger): self
-////    {
-////        $dto = new self();
-////
-////        $dto->setSurname($passenger->getSurname());
-////        $dto->setName($passenger->getName());
-////        $dto->setPatronymic($passenger->getPatronimic());
-////        $dto->setPassportSeries($passenger->getPassportSeries());
-////        $dto->setPassportNumber($passenger->getPassportNumber());
-////
-////        return $dto;
-////    }
-//
-//    public function getSurname(): ?string
+//    private ?DateTime $flight_date;
+
+    public function getFlight(): ?Flight
+    {
+        return $this->flight;
+    }
+
+    public function setFlight(?Flight $flight): void
+    {
+        $this->flight = $flight;
+    }
+
+    public function getPassenger(): ?Passenger
+    {
+        return $this->passenger;
+    }
+
+    public function setPassenger(?Passenger $passenger): void
+    {
+        $this->passenger = $passenger;
+    }
+
+//    public function getFlightDate(): ?DateTime
 //    {
-//        return $this->surname;
+//        return $this->flight_date;
 //    }
 //
-//    public function setSurname(?string $surname): void
+//    public function setFlightDate(?DateTime $flight_date): void
 //    {
-//        $this->surname = $surname;
+//        $this->flight_date = $flight_date;
 //    }
-//
-//    public function getName(): ?string
-//    {
-//        return $this->name;
-//    }
-//
-//    public function setName(?string $name): void
-//    {
-//        $this->name = $name;
-//    }
-//
-//    public function getPatronymic(): ?string
-//    {
-//        return $this->patronymic;
-//    }
-//
-//    public function setPatronymic(?string $patronymic): void
-//    {
-//        $this->patronymic = $patronymic;
-//    }
-//
-//    public function getPassportSeries(): ?int
-//    {
-//        return $this->passportSeries;
-//    }
-//
-//    public function setPassportSeries(?int $passportSeries): void
-//    {
-//        $this->passportSeries = $passportSeries;
-//    }
-//
-//    public function getPassportNumber(): ?int
-//    {
-//        return $this->passportNumber;
-//    }
-//
-//    public function setPassportNumber(?int $passportNumber): void
-//    {
-//        $this->passportNumber = $passportNumber;
-//    }
-//
-//
-//}
+
+}
