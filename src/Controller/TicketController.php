@@ -7,6 +7,7 @@ use App\Entity\Ticket;
 use App\Form\Type\TicketType;
 use App\Repository\FlightRepository;
 use App\Repository\TicketRepository;
+use App\Service\TicketEmailSender;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,10 +21,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class TicketController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
+    private TicketEmailSender $emailSender;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, TicketEmailSender $emailSender)
     {
         $this->entityManager = $entityManager;
+        $this->emailSender = $emailSender;
     }
 
 //    /**
@@ -57,15 +60,15 @@ class TicketController extends AbstractController
     }
 
     /**
-     * @Route("/add", name="ticket.add")
+     * @Route("/buy", name="ticket.buy")
      */
-    public function addAction(Request $request, FlightRepository $flightRepository): Response
+    public function buyAction(Request $request, FlightRepository $flightRepository): Response
     {
         $ticketDto = new TicketDTO();
         $activeFlights = $flightRepository->findBy((['status' => 'активен']));
 
         $form = $this->createForm(TicketType::class, $ticketDto, [
-            'action' => $this->generateUrl('ticket.add'),
+            'action' => $this->generateUrl('ticket.buy'),
             'activeFlights' => $activeFlights
         ]);
 
@@ -76,12 +79,13 @@ class TicketController extends AbstractController
             $this->entityManager->persist($ticket);
             $this->entityManager->flush();
 
+            $this->emailSender->sendTicketInformation($ticket);
             return $this->redirectToRoute('ticket.show', [
                 'id' => $ticket->getId(),
             ]);
         }
 
-        return $this->renderForm('ticket/add.html.twig', [
+        return $this->renderForm('ticket/buy.html.twig', [
             'form' => $form,
         ]);
     }

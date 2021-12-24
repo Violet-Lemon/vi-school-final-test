@@ -25,33 +25,33 @@ class PassengerController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @Route("/list", name="passenger.list")
-     */
-    public function getListAction(PassengerRepository $passengerRepository): Response
-    {
-        $passengerList = $passengerRepository->findAll();
+//    /**
+//     * @Route("/list", name="passenger.list")
+//     */
+//    public function getListAction(PassengerRepository $passengerRepository): Response
+//    {
+//        $passengerList = $passengerRepository->findAll();
+//
+//        return $this->render('passenger/list.html.twig', [
+//            'passengerList' => $passengerList,
+//        ]);
+//    }
 
-        return $this->render('passenger/list.html.twig', [
-            'passengerList' => $passengerList,
-        ]);
-    }
-
-    /**
-     * @Route("/show/{id}", name="passenger.show")
-     */
-    public function showAction(int $id, PassengerRepository $passengerRepository): Response
-    {
-        $passenger = $passengerRepository->findById($id);
-
-        if (is_null($passenger)) {
-            throw new NotFoundHttpException('Пассажир не найден');
-        }
-
-        return $this->renderForm('passenger/show.html.twig', [
-            'passenger' => $passenger,
-        ]);
-    }
+//    /**
+//     * @Route("/show/{id}", name="passenger.show")
+//     */
+//    public function showAction(int $id, PassengerRepository $passengerRepository): Response
+//    {
+//        $passenger = $passengerRepository->findById($id);
+//
+//        if (is_null($passenger)) {
+//            throw new NotFoundHttpException('Пассажир не найден');
+//        }
+//
+//        return $this->renderForm('passenger/show.html.twig', [
+//            'passenger' => $passenger,
+//        ]);
+//    }
 
     /**
      * @Route("/add", name="passenger.add")
@@ -71,7 +71,7 @@ class PassengerController extends AbstractController
             $this->entityManager->persist($passenger);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('passenger.show', [
+            return $this->redirectToRoute('ticket.buy', [
                 'id' => $passenger->getId(),
             ]);
         }
