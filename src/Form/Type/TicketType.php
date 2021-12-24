@@ -7,6 +7,7 @@ use App\Entity\Flight;
 use App\Entity\Passenger;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -30,6 +31,10 @@ class TicketType extends AbstractType
                     return $passenger->getFullPassengerData();
                 },
                 'label' => 'Пассажир'
+            ])
+            ->add('flightDate', DateType::class, [
+                'widget' => 'single_text',
+                'label' => 'Дата'
             ])
             ->add('buy', SubmitType::class, ['label' => 'Купить']);
     }

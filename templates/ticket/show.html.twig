@@ -9,12 +9,19 @@
             <thead>
             <tbody>
             <tr>
-                <td>Фамилия</td>
+                <td>{{ passenger }}</td>
+            </tr>
+            <tr>
+                <td>Билет</td>
+            </tr>
+            <tr>
+                <td>{{ flightDate.format('d.m.Y') }}</td>
+            </tr>
+            <tr>
                 <td>{{ flight }}</td>
             </tr>
             <tr>
-                <td>Имя</td>
-                <td>{{ passenger }}</td>
+                <td>Цена</td>
             </tr>
             </tbody>
         </table>

@@ -84,20 +84,21 @@ class Ticket
 
     public function __construct(
         Passenger $passenger,
-        Flight $flight
-//        DateTime $flight_date
+        Flight    $flight,
+        DateTime  $flight_date
     )
     {
         $this->passenger = $passenger;
         $this->flight = $flight;
-        $this->flight_date = new DateTime();
+        $this->flight_date = $flight_date;
     }
+
     public static function createFromDTO(TicketDTO $dto): self
     {
         return new self(
             $dto->getPassenger(),
-            $dto->getFlight()
-//            $dto->getFlightDate()
+            $dto->getFlight(),
+            $dto->getFlightDate()
         );
     }
 }

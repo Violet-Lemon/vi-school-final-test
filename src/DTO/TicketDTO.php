@@ -17,11 +17,10 @@ class TicketDTO
      * @Assert\NotBlank(message="Поле должно быть заполнено")
      */
     private ?Passenger $passenger;
-//    /**
-//     * @Assert\NotBlank(message="Поле должно быть заполнено")
-//     * @Assert\Length(max=100)
-//     */
-//    private ?DateTime $flight_date;
+    /**
+     * @Assert\NotBlank(message="Поле должно быть заполнено")
+     */
+    private ?DateTime $flight_date;
 
     public function getFlight(): ?Flight
     {
@@ -43,14 +42,14 @@ class TicketDTO
         $this->passenger = $passenger;
     }
 
-//    public function getFlightDate(): ?DateTime
-//    {
-//        return $this->flight_date;
-//    }
-//
-//    public function setFlightDate(?DateTime $flight_date): void
-//    {
-//        $this->flight_date = $flight_date;
-//    }
+    public function getFlightDate(): ?DateTime
+    {
+        return $this->flight_date;
+    }
+
+    public function setFlightDate(?DateTime $flight_date): void
+    {
+        $this->flight_date = $flight_date;
+    }
 
 }

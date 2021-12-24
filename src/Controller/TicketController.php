@@ -55,7 +55,8 @@ class TicketController extends AbstractController
         return $this->renderForm('ticket/show.html.twig', [
             'ticket' => $ticket,
             'flight' => $ticket->getFlight()->getFlightData(),
-            'passenger' => $ticket->getPassenger()->getFullPassengerData()
+            'passenger' => $ticket->getPassenger()->getFullPassengerData(),
+            'flightDate' => $ticket->getFlightDate()
         ]);
     }
 
