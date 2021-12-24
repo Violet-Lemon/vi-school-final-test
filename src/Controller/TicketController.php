@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\DTO\TicketDTO;
 use App\Entity\Ticket;
 use App\Form\Type\TicketType;
+use App\Repository\FlightRepository;
 use App\Repository\TicketRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -58,12 +59,14 @@ class TicketController extends AbstractController
     /**
      * @Route("/add", name="ticket.add")
      */
-    public function addAction(Request $request): Response
+    public function addAction(Request $request, FlightRepository $flightRepository): Response
     {
         $ticketDto = new TicketDTO();
+        $activeFlights = $flightRepository->findBy((['status' => 'активен']));
 
         $form = $this->createForm(TicketType::class, $ticketDto, [
-            'action' => $this->generateUrl('ticket.add')
+            'action' => $this->generateUrl('ticket.add'),
+            'activeFlights' => $activeFlights
         ]);
 
         $form->handleRequest($request);

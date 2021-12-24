@@ -21,7 +21,8 @@ class TicketType extends AbstractType
                 'choice_label' => function ($flight) {
                     return $flight->getFlightData();
                 },
-                'label' => 'Рейс'
+                'label' => 'Рейс',
+                'choices' => $options['activeFlights']
             ])
             ->add('passenger', EntityType::class, [
                 'class' => Passenger::class,
@@ -37,6 +38,7 @@ class TicketType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => TicketDTO::class,
-        ]);
+        ])
+            ->setRequired('activeFlights');
     }
 }
