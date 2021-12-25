@@ -28,7 +28,8 @@
                         <td class="text-left">{{ ticket.getFlightDate.format('d.m.Y') }}</td>
                         <td class="text-center">
                             {% if ticket.status == 'забронирован' %}
-                                <a class="btn btn-primary btn-sm" href="{{ path('ticket.cancel', {'id': ticket.id }) }}">
+                                <a class="btn btn-primary btn-sm"
+                                   href="{{ path('ticket.cancel', {'id': ticket.id }) }}">
                                     Отменить бронирование
                                 </a>
                             {% elseif ticket.status == 'отменен' %}
@@ -41,5 +42,4 @@
             </table>
         </div>
     </div>
-
 {% endblock %}

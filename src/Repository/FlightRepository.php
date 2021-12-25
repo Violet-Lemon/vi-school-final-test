@@ -18,9 +18,4 @@ class FlightRepository extends ServiceEntityRepository
         return $this->findOneBy(['id' => $id]);
     }
 
-//    public function findByStatus(string $status): array
-//    {
-//        return $this->findBy(['status' => $status]);
-//    }
-
 }

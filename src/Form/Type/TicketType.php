@@ -34,7 +34,10 @@ class TicketType extends AbstractType
             ])
             ->add('flightDate', DateType::class, [
                 'widget' => 'single_text',
-                'label' => 'Дата'
+                'label' => 'Дата',
+                'attr' => array(
+                    'min' => date('Y-m-d')
+                )
             ])
             ->add('buy', SubmitType::class, ['label' => 'Купить']);
     }

@@ -93,6 +93,7 @@ class Flight
     {
         return $this->id;
     }
+
     public function getFlightData(): string
     {
         $format = '%s (%s) - %s (%s)';

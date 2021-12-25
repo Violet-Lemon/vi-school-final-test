@@ -39,4 +39,5 @@ class PassengerType extends AbstractType
             'data_class' => PassengerDTO::class,
         ]);
     }
+
 }

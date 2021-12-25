@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\DTO\PassengerDTO;
 use App\DTO\TicketDTO;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
