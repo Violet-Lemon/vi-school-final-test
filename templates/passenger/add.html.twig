@@ -2,50 +2,35 @@
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
 
 {% block body %}
-    <a class="btn btn-primary btn-sm" href="{{ path('homepage') }}">
-        На главную
+    <a class="btn btn-outline-primary btn-sm" href="{{ path('ticket.buy') }}">
+        К покупке билета
     </a>
-    <h1>Добавить нового пассажира</h1>
 
-    <div class="container">
+    <div class="container mt-4 bg-light">
+        <h2>Пассажир</h2>
         {{ form_start(form) }}
-        <div class="row g-3 align-items-center">
-            <div class="col">
-                {{ form_label(form.surname) }}
+        <div class="row g-3 justify-content-start mt-4">
+            <div class="col-2">
+                {{ form_row(form.surname) }}
             </div>
-            <div class="col">
-                {{ form_widget(form.surname) }}
+            <div class="col-2">
+                {{ form_row(form.name) }}
             </div>
-            <div class="col">
-                {{ form_label(form.name) }}
+            <div class="col-2">
+                {{ form_row(form.patronymic) }}
             </div>
-            <div class="col">
-                {{ form_widget(form.name) }}
+            <div class="col-1 align-self-center offset-md-1">
+                <p>Паспорт</p>
             </div>
-            <div class="col">
-                {{ form_label(form.patronymic) }}
+            <div class="col-2">
+                {{ form_row(form.passportSeries) }}
             </div>
-            <div class="col">
-                {{ form_widget(form.patronymic) }}
-            </div>
-            <div class="col">
-                Паспорт
-            </div>
-            <div class="col">
-                {{ form_label(form.passportSeries) }}
-            </div>
-            <div class="col">
-                {{ form_widget(form.passportSeries) }}
-            </div>
-            <div class="col">
-                {{ form_label(form.passportNumber) }}
-            </div>
-            <div class="col">
-                {{ form_widget(form.passportNumber) }}
+            <div class="col-2">
+                {{ form_row(form.passportNumber) }}
             </div>
         </div>
-        <div class="row gy-3 justify-content-center">
-            <div class="col">
+        <div class="row mt-4 justify-content-center">
+            <div class="col-1">
                 {{ form_row(form.save) }}
             </div>
         </div>

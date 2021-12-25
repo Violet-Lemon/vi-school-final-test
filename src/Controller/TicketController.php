@@ -29,17 +29,17 @@ class TicketController extends AbstractController
         $this->emailSender = $emailSender;
     }
 
-//    /**
-//     * @Route("/list", name="ticket.list")
-//     */
-//    public function getListAction(TicketRepository $ticketRepository): Response
-//    {
-//        $ticketList = $ticketRepository->findAll();
-//
-//        return $this->render('ticket/list.html.twig', [
-//            'ticketList' => $ticketList,
-//        ]);
-//    }
+    /**
+     * @Route("/list", name="ticket.list")
+     */
+    public function getListAction(TicketRepository $ticketRepository): Response
+    {
+        $ticketList = $ticketRepository->findAll();
+
+        return $this->render('ticket/list.html.twig', [
+            'ticketList' => $ticketList,
+        ]);
+    }
 
     /**
      * @Route("/show/{id}", name="ticket.show")
@@ -90,6 +90,23 @@ class TicketController extends AbstractController
         return $this->renderForm('ticket/buy.html.twig', [
             'form' => $form,
         ]);
+    }
+
+    /**
+     * @Route("/cancel/{id}", name="ticket.cancel")
+     */
+    public function cancelAction(int $id, TicketRepository $ticketRepository): Response
+    {
+        $ticket = $ticketRepository->findById($id);
+
+        if (is_null($ticket)) {
+            throw new NotFoundHttpException('Билет не найден');
+        }
+
+        $ticket->setStatus('отменен');
+        $this->entityManager->flush();
+
+        return $this->redirectToRoute('ticket.list');
     }
 
 }

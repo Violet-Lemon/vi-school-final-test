@@ -4,27 +4,25 @@
 
 {% block body %}
 
-    <div>
-        <table class="table">
-            <thead>
-            <tbody>
-            <tr>
-                <td>{{ passenger }}</td>
-            </tr>
-            <tr>
-                <td>Билет</td>
-            </tr>
-            <tr>
-                <td>{{ flightDate.format('d.m.Y') }}</td>
-            </tr>
-            <tr>
-                <td>{{ flight }}</td>
-            </tr>
-            <tr>
-                <td>Цена</td>
-            </tr>
-            </tbody>
-        </table>
+    <a class="btn btn-outline-primary btn-sm" href="{{ path('ticket.buy') }}">
+        К покупке нового билета
+    </a>
+    <div class="container bg-light">
+        <div class="row justify-content-start mt-3 fs-5">
+            {{ passenger }}
+        </div>
+        <div class="row justify-content-start mt-2 fs-5 text-decoration-underline">
+            Билет:
+        </div>
+        <div class="row justify-content-start fs-5 mt-2">
+            {{ flightDate.format('d.m.Y') }}
+        </div>
+        <div class="row justify-content-start fs-5">
+            {{ flight }}
+        </div>
+        <div class="row justify-content-start fs-5">
+            Цена {{ price }} рублей
+        </div>
     </div>
 
 {% endblock %}
