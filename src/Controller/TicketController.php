@@ -77,6 +77,7 @@ class TicketController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ticket = Ticket::createFromDTO($ticketDto);
+            dd($ticket);
             $this->entityManager->persist($ticket);
             $this->entityManager->flush();
 

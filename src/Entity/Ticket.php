@@ -36,6 +36,10 @@ class Ticket
      * @ORM\Column(name="status", type="string", length=100, options={"default" : "забронирован"})
      */
     private string $status = 'забронирован';
+    /**
+     * @ORM\Column(name="price", type="float")
+     */
+    private float $price;
 
     public function getPassenger(): Passenger
     {
@@ -77,6 +81,17 @@ class Ticket
         $this->status = $status;
     }
 
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +106,14 @@ class Ticket
         $this->passenger = $passenger;
         $this->flight = $flight;
         $this->flight_date = $flight_date;
+        $this->price = $flight->getBasePrice();
+        if ($flight_date->format('N') >= 6) {
+            $this->price = $flight->getBasePrice() * 2;
+        }
+    }
+
+    public static function priceInWeekend(DateTime $date) {
+        return ;
     }
 
     public static function createFromDTO(TicketDTO $dto): self
@@ -98,7 +121,7 @@ class Ticket
         return new self(
             $dto->getPassenger(),
             $dto->getFlight(),
-            $dto->getFlightDate()
+            $dto->getFlightDate(),
         );
     }
 }
