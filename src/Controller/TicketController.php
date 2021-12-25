@@ -56,7 +56,8 @@ class TicketController extends AbstractController
             'ticket' => $ticket,
             'flight' => $ticket->getFlight()->getFlightData(),
             'passenger' => $ticket->getPassenger()->getFullPassengerData(),
-            'flightDate' => $ticket->getFlightDate()
+            'flightDate' => $ticket->getFlightDate(),
+            'price' => $ticket->getPrice()
         ]);
     }
 

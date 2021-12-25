@@ -23,25 +23,15 @@ class PassengerDTO
     private ?string $patronymic;
     /**
      * @Assert\NotBlank(message="Поле должно быть заполнено")
+     * @Assert\Length(max=4, maxMessage="Серия паспорта должна состоять из 4 цифр", min=4, maxMessage="Серия паспорта должна состоять из 4 цифр")
+     *
      */
     private ?int $passportSeries;
     /**
      * @Assert\NotBlank(message="Поле должно быть заполнено")
+     * @Assert\Length(max=6, maxMessage="Номер паспорта должен состоять из 6 цифр", min=6, maxMessage="Номер паспорта должен состоять из 6 цифр")
      */
     private ?int $passportNumber;
-
-//    public static function createFromEntity(Passenger $passenger): self
-//    {
-//        $dto = new self();
-//
-//        $dto->setSurname($passenger->getSurname());
-//        $dto->setName($passenger->getName());
-//        $dto->setPatronymic($passenger->getPatronymic());
-//        $dto->setPassportSeries($passenger->getPassportSeries());
-//        $dto->setPassportNumber($passenger->getPassportNumber());
-//
-//        return $dto;
-//    }
 
     public function getSurname(): ?string
     {

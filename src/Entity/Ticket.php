@@ -106,9 +106,10 @@ class Ticket
         $this->passenger = $passenger;
         $this->flight = $flight;
         $this->flight_date = $flight_date;
-        $this->price = $flight->getBasePrice();
         if ($flight_date->format('N') >= 6) {
             $this->price = $flight->getBasePrice() * 2;
+        } else {
+            $this->price = $flight->getBasePrice();
         }
     }
 
