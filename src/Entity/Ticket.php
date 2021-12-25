@@ -112,10 +112,6 @@ class Ticket
         }
     }
 
-    public static function priceInWeekend(DateTime $date) {
-        return ;
-    }
-
     public static function createFromDTO(TicketDTO $dto): self
     {
         return new self(
